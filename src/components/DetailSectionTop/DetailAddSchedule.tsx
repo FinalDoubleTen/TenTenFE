@@ -24,7 +24,7 @@ const DetailAddSchedule = () => {
 
         <Dialog.Content className="data-[state=open]:animate-contentShow fixed left-[50%] top-[97%] z-10 max-h-[85vh] w-[412px] translate-x-[-50%] translate-y-[-90%] rounded-tl-[16px] rounded-tr-[16px] bg-white p-[20px] pb-[50px]  shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
           <Dialog.Close className="text-mauve12 m-0 flex w-full justify-end text-[17px] font-medium">
-            <button className="btn-base h-[40px] w-[116px] rounded-full bg-main1 p-0 text-[14px] font-bold text-white disabled:cursor-not-allowed disabled:bg-gray3">
+            <button className="btn-base h-[40px] w-[116px] rounded-full bg-main2 p-0 text-[14px] font-bold text-white disabled:cursor-not-allowed disabled:bg-gray3">
               + 여행 생성하기
             </button>
           </Dialog.Close>
@@ -67,7 +67,7 @@ const DetailAddSchedule = () => {
             }
             onConfirm={handleConfirm}>
             <div className="mt-[25px] flex justify-end">
-              <button className="btn-base bg-main1 text-lg font-bold text-white disabled:cursor-not-allowed disabled:bg-gray3">
+              <button className="btn-base bg-main2 text-lg font-bold text-white disabled:cursor-not-allowed disabled:bg-gray3">
                 일정 추가하기
               </button>
             </div>

@@ -168,59 +168,68 @@ export const UserIcon: React.FC<IconProps> = ({
   );
 };
 
-export const CheckIcon: React.FC<IconProps> = ({
-  size = 25,
-  color = 'black',
+interface ChackIconProps {
+  width?: number;
+  height?: number;
+  color?: string;
+  fill?: string;
+}
+
+export const CheckIcon = ({
+  width = 16,
+  height = 16,
+  color = '#888888',
   fill = 'none',
-  onClick,
-  cursor = 'pointer',
-}) => {
+}: ChackIconProps) => {
   return (
     <svg
-      onClick={onClick}
-      cursor={cursor}
-      width={size}
-      height={size}
+      width={width}
+      height={height}
       viewBox="0 0 17 17"
       fill={fill}
       xmlns="http://www.w3.org/2000/svg">
-      <g id="Group 36659">
+      <g id="Group 36698">
         <path
-          id="Vector 734"
-          d="M3.12079 5.40039L8.41553 10.6951L13.7103 5.40039"
+          id="Vector 747"
+          d="M2.93848 8.00788L7.01646 12.0858L13.4343 5.66797"
           stroke={color}
-          strokeLinecap="round"
         />
       </g>
     </svg>
   );
 };
 
-export const LeftIcon: React.FC<IconProps> = ({
-  size = 25,
-  color = 'black',
-  fill = 'none',
+interface LeftIconProps {
+  width?: number;
+  height?: number;
+  fill?: string;
+  onClick?: VoidFunction;
+  cursor?: string;
+}
+
+export const LeftIcon = ({
+  width = 8,
+  height = 15,
+  fill = '#1E1E1E',
   onClick,
   cursor = 'pointer',
-}) => {
+}: LeftIconProps) => {
   return (
     <svg
       onClick={onClick}
       cursor={cursor}
-      width={size}
-      height={size}
-      viewBox="0 0 17 10"
-      fill={fill}
+      width={width}
+      height={height}
+      viewBox="0 0 8 15"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <g id="Left">
-        <path
-          id="Vector"
-          d="M4.74112 1.18604L1.44823 4.47893C1.0577 4.86945 1.0577 5.50262 1.44823 5.89314L4.74112 9.18604M1.74112 5.18604L15.7411 5.18604"
-          stroke={color}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </g>
+      <path
+        id="Left"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.65547 0.743953C8.9713 1.02827 8.99457 1.51229 8.70746 1.82503L2.99737 8.04492L8.70746 14.2648C8.99457 14.5776 8.9713 15.0616 8.65547 15.3459C8.33964 15.6302 7.85086 15.6072 7.56375 15.2944L0.908447 8.04492L7.56375 0.795433C7.85087 0.482685 8.33965 0.459636 8.65547 0.743953Z"
+        fill={fill}
+      />
     </svg>
   );
 };
@@ -531,7 +540,7 @@ export const CloseIcon: React.FC<IconProps> = ({
       fill={fill}
       xmlns="http://www.w3.org/2000/svg">
       <g id="Group 36673">
-        <circle id="Ellipse" cx="8.00671" cy="8.59326" r="8" fill="#888888" />
+        <circle id="Ellipse" cx="8.00671" cy="8.59326" r="8" fill={fill} />
         <path
           id="Line"
           d="M5.04033 5.62725L10.9731 11.5601"
@@ -643,9 +652,13 @@ export const DownIcon: React.FC<IconProps> = ({
   size = 25,
   color = 'black',
   fill = 'none',
+  onClick,
+  cursor = 'pointer',
 }) => {
   return (
     <svg
+      onClick={onClick}
+      cursor={cursor}
       width={size}
       height={size}
       viewBox="0 0 17 17"
@@ -700,25 +713,30 @@ export const SearchIcon: React.FC<IconProps> = ({
   );
 };
 
-export const CameraIcon: React.FC<IconProps> = ({
-  size = 25,
-  color = 'black',
-  fill = 'none',
-}) => {
+export const CameraIcon: React.FC<IconProps> = () => {
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 13 11"
-      fill={fill}
+      width="14"
+      height="13"
+      viewBox="0 0 14 13"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <path
-        id="Vector"
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M3.14101 1.46934C3.49974 0.877766 4.14214 0.460938 4.87796 0.460938H7.5831C8.31891 0.460938 8.96132 0.877766 9.32005 1.46934C9.42939 1.64966 9.55178 1.839 9.67791 2.01208C9.73825 2.0949 9.85609 2.16106 10.0196 2.16106H10.0871C11.3044 2.16106 12.2911 3.14781 12.2911 4.36491V8.7254C12.2911 9.94256 11.3044 10.9293 10.0873 10.9293H2.37378C1.15662 10.9293 0.169922 9.94256 0.169922 8.7254V4.36491C0.169922 3.14781 1.15643 2.16106 2.37365 2.16106H2.44121C2.6047 2.16106 2.7228 2.0949 2.78315 2.01208C2.90928 1.839 3.03167 1.64966 3.14101 1.46934ZM4.87796 1.56287C4.57032 1.56287 4.26555 1.74005 4.08324 2.0407C3.9634 2.23833 3.82358 2.45537 3.67372 2.66103C3.37133 3.076 2.89391 3.26298 2.44147 3.26298H2.37391C1.76539 3.26298 1.27185 3.75628 1.27185 4.36491V8.7254C1.27185 9.33398 1.7652 9.82733 2.37378 9.82733H10.0873C10.6959 9.82733 11.1892 9.33398 11.1892 8.7254V4.36491C11.1892 3.75628 10.6959 3.26298 10.0874 3.26298H10.0199C9.56741 3.26298 9.08973 3.076 8.78734 2.66103C8.63747 2.45537 8.49766 2.23833 8.37782 2.0407C8.19551 1.74005 7.89073 1.56287 7.5831 1.56287H4.87796ZM6.23053 4.31769C5.31766 4.31769 4.57764 5.05771 4.57764 5.97058C4.57764 6.88345 5.31766 7.62347 6.23053 7.62347C7.1434 7.62347 7.88342 6.88345 7.88342 5.97058C7.88342 5.05771 7.1434 4.31769 6.23053 4.31769ZM3.47571 5.97058C3.47571 4.44913 4.70908 3.21576 6.23053 3.21576C7.75197 3.21576 8.98535 4.44913 8.98535 5.97058C8.98535 7.49203 7.75197 8.7254 6.23053 8.7254C4.70908 8.7254 3.47571 7.49202 3.47571 5.97058Z"
-        stroke={color}
-      />
+      <g id="Group 36734">
+        <path
+          id="Union (Stroke)"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M5.80814 1.81641C5.29776 1.81641 4.85442 2.16747 4.73743 2.66426L4.59715 3.25993C4.52235 3.57756 4.23874 3.89225 3.82176 3.89225H3.06094C2.45342 3.89225 1.96094 4.38473 1.96094 4.99224V10.0194C1.96094 10.6269 2.45342 11.1194 3.06094 11.1194H11.8609C12.4685 11.1194 12.9609 10.6269 12.9609 10.0194V4.99225C12.9609 4.38473 12.4685 3.89225 11.8609 3.89225H11.1008C10.6856 3.89225 10.4028 3.57886 10.3288 3.26184L10.1896 2.66616C10.0733 2.16846 9.62955 1.81641 9.11844 1.81641H5.80814ZM3.76405 2.43503C3.9874 1.48662 4.83378 0.816406 5.80814 0.816406H9.11844C10.0942 0.816406 10.9414 1.4885 11.1634 2.43867L11.2693 2.89225H11.8609C13.0207 2.89225 13.9609 3.83245 13.9609 4.99225V10.0194C13.9609 11.1792 13.0207 12.1194 11.8609 12.1194H3.06094C1.90114 12.1194 0.960938 11.1792 0.960938 10.0194V4.99224C0.960938 3.83245 1.90114 2.89225 3.06094 2.89225H3.65638L3.76405 2.43503Z"
+          fill="#1E1E1E"
+        />
+        <path
+          id="Ellipse 536 (Stroke)"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M7.46038 5.17187C6.48987 5.17187 5.70312 5.95862 5.70312 6.92913C5.70312 7.89963 6.48987 8.68638 7.46038 8.68638C8.43088 8.68638 9.21763 7.89963 9.21763 6.92913C9.21763 5.95862 8.43088 5.17187 7.46038 5.17187ZM4.70312 6.92913C4.70312 5.40634 5.93759 4.17188 7.46038 4.17188C8.98316 4.17188 10.2176 5.40634 10.2176 6.92913C10.2176 8.45191 8.98316 9.68638 7.46038 9.68638C5.93759 9.68638 4.70312 8.45191 4.70312 6.92913Z"
+          fill="#1E1E1E"
+        />
+      </g>
     </svg>
   );
 };

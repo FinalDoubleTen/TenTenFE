@@ -1,6 +1,11 @@
 interface MemberRequest {
   nickname: string;
-  survey: string;
   profileImageUrl: string;
-  password: string;
+  ageType: string;
+  genderType: string;
+}
+
+interface SelectOption {
+  id: string;
+  value: string;
 }

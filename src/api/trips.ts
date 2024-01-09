@@ -1,10 +1,11 @@
+import authClient from './authClient';
 import client from './client';
 
 // 여정 관련 API
 
 // 나의 여정 목록조회
 export const getTrips = async (page: number, size: number) => {
-  const res = await client.get(`trips?page=${page}&size=${size}`);
+  const res = await authClient.get(`trips?page=${page}&size=${size}`);
   return res;
 };
 

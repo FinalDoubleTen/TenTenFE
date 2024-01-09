@@ -1,3 +1,4 @@
+import authClient from './authClient';
 import client from './client';
 
 // 여행지 관련 API
@@ -9,7 +10,7 @@ export const getTours = async (
   size?: number,
 ) => {
   try {
-    const res = await client.get(
+    const res = await authClient.get(
       `tours?${
         region !== '전체' && `region=${region}`
       }&page=${page}&size=${size}`,
@@ -39,7 +40,7 @@ export const postLikedTours = async (options: { id: number }) => {
 
     let query = `/liked/${id}`;
 
-    const res = await client.post(query);
+    const res = await authClient.post(query);
 
     return res;
   } catch (e) {
@@ -54,7 +55,7 @@ export const deleteLikedTours = async (options: { id: number }) => {
 
     let query = `/liked/${id}`;
 
-    const res = await client.delete(query);
+    const res = await authClient.delete(query);
 
     return res;
   } catch (e) {

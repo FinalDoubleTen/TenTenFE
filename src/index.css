@@ -39,7 +39,7 @@ code {
 
 @layer components {
   .btn-base {
-    @apply w-full rounded-lg py-3.5 transition;
+    @apply w-full rounded-lg p-2 transition;
   }
 
   .title1,

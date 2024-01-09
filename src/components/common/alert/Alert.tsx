@@ -28,7 +28,7 @@ const Alert: FC<AlertProps> = ({ title, message, onConfirm, children }) => (
           </Dialog.Close>
           <button
             onClick={onConfirm}
-            className="btn-base h-[48px] w-[134px] bg-main1 p-[8px] text-[15px] font-bold text-white">
+            className="btn-base h-[48px] w-[134px] bg-main2 p-[8px] text-[15px] font-bold text-white">
             확인
           </button>
         </div>
