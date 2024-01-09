@@ -40,7 +40,7 @@ export const getModalStyles = (modalChildren: string) => {
         bottom: '0',
         marginRight: '-50%',
         transform: 'translate(-50%, 0)',
-        width: '375px',
+        width: '415px', // 375px + padding 40 (20 20)
         height: '186px',
         borderTopLeftRadius: '2rem',
         borderTopRightRadius: '2rem',

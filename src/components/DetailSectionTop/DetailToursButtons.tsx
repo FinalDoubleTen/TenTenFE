@@ -1,3 +1,6 @@
+
+import { useSetRecoilState } from 'recoil';
+import { isModifyingReviewState } from '@recoil/review';
 import { PenIcon } from '@components/common/icons/Icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -12,8 +15,10 @@ export default function DetailTourButtons({ reviewData }: reviewProps) {
   const params = useParams();
   const tourItemId = Number(params.id);
   const navigate = useNavigate();
+  const setIsModifyingReview = useSetRecoilState(isModifyingReviewState);
 
   const handlePostingReivew = () => {
+    setIsModifyingReview(false);
     navigate(`/reviewPosting/${tourItemId}`, {
       state: { title, contentTypeId },
     });

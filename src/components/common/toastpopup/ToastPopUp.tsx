@@ -13,7 +13,7 @@ const ToastPopUp: React.FC<ToastPopUpProps> = ({ noun, verb }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setVisible(false);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -27,11 +27,11 @@ const ToastPopUp: React.FC<ToastPopUpProps> = ({ noun, verb }) => {
       className={`fixed flex items-center px-4 `}
       style={{
         top: '0',
-        left: '35%',
+        left: '50%',
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+        transform: visible ? 'translate(-50%, 0)' : 'translate(-50%, -50%)',
         width: '375px',
         height: '64px',
         borderRadius: '1rem',

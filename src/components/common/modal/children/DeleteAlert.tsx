@@ -8,18 +8,28 @@ import {
 } from '@recoil/review';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 const DeleteAlert = ({}) => {
   const navigate = useNavigate();
   const tourItemId = useRecoilValue(tourItemIdState);
   const targetReviewId = useRecoilValue(targetReviewIdState);
   const setIsModalOpen = useSetRecoilState(isModalOpenState);
   const setToastPopUp = useSetRecoilState(toastPopUpState);
+  const queryClient = useQueryClient();
+
+  const { mutate: deleteReviewMutate } = useMutation({
+    mutationFn: (targetReviewId: number) => deleteReview(targetReviewId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['toursReviews'] });
+    },
+    onError: () => console.log('error'),
+  });
 
   const handleDeleteButton = async () => {
-    await deleteReview(targetReviewId);
+    await deleteReviewMutate(targetReviewId);
     setIsModalOpen(false);
     navigate(`/detail/${tourItemId}`);
-    window.location.reload();
     setToastPopUp(() => ({
       isPopUp: true,
       noun: '리뷰',
@@ -38,10 +48,10 @@ const DeleteAlert = ({}) => {
           onClick={() => {
             setIsModalOpen(false);
           }}
-          className="text-xs">
+          className="text-sm">
           취소
         </ButtonWhite>
-        <ButtonPrimary onClick={handleDeleteButton} className="text-xs">
+        <ButtonPrimary onClick={handleDeleteButton} className="text-sm">
           삭제
         </ButtonPrimary>
       </div>

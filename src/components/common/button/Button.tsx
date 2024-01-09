@@ -29,7 +29,7 @@ export const ButtonPrimary: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`btn-base bg-primary text-xs font-bold text-white disabled:cursor-not-allowed disabled:bg-gray3 ${className}`}
+      className={`btn-base bg-primary text-lg font-bold text-white disabled:cursor-not-allowed disabled:bg-gray3 ${className}`}
       disabled={disabled}>
       {children}
     </button>

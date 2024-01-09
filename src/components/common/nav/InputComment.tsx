@@ -5,11 +5,19 @@ import { commentState } from '@recoil/review';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { putComments } from '@api/comments';
 import { isModifyingCommentState, targetCommentIdState } from '@recoil/review';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface InputCommentProps {
   classNameName?: string;
 }
-
+interface PostCommentMutationParams {
+  comment: string;
+  reviewId: number;
+}
+interface EditCommentMutationParams {
+  comment: string;
+  targetCommentId: number;
+}
 export const InputComment: React.FC<InputCommentProps> = () => {
   const [comment, setComment] = useRecoilState(commentState);
   const params = useParams();
@@ -18,6 +26,24 @@ export const InputComment: React.FC<InputCommentProps> = () => {
     isModifyingCommentState,
   );
   const targetCommentId = useRecoilValue(targetCommentIdState);
+  const queryClient = useQueryClient();
+
+  const { mutate: postCommentMutate } = useMutation({
+    mutationFn: ({ comment, reviewId }: PostCommentMutationParams) =>
+      postComments(comment, reviewId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['reviewComments'] });
+    },
+    onError: () => console.log('error'),
+  });
+  const { mutate: editCommentMutate } = useMutation({
+    mutationFn: ({ comment, targetCommentId }: EditCommentMutationParams) =>
+      putComments(comment, targetCommentId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['reviewComments'] });
+    },
+    onError: () => console.log('error'),
+  });
 
   const handleTextChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputText = event.target.value;
@@ -26,13 +52,12 @@ export const InputComment: React.FC<InputCommentProps> = () => {
 
   const handleSubmit = async () => {
     if (isModifyingComment) {
-      await putComments(comment, targetCommentId);
+      await editCommentMutate({ comment, targetCommentId });
       setIsModifyingComment(false);
     } else {
-      await postComments(comment, reviewId);
+      await postCommentMutate({ comment, reviewId });
     }
     setComment('');
-    window.location.reload();
   };
   const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
