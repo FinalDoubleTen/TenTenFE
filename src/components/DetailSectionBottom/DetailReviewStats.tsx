@@ -24,14 +24,12 @@ const DetailReviewStats = () => {
                   backgroundColor: getColor(data.keywordCount),
                 }}
               />
-              <div className="absolute left-[14.5px] top-[12.23px] flex items-center justify-start gap-[137.5px]">
-                <div className="flex items-start justify-start gap-2.5">
-                  <p className="w-4">{getEmoji(data.content)}</p>
-                  <p className="h-[15.55px] w-[166px] font-bold text-gray6">
-                    {data.content}
-                  </p>
+              <div className="absolute left-[14.5px] top-[12.23px] flex w-[90%] items-center justify-start">
+                <div className="flex flex-grow items-start justify-start gap-2.5">
+                  <p>{getEmoji(data.content)}</p>
+                  <p className="font-bold text-gray6">{data.content}</p>
                 </div>
-                <p className=" font-bold text-gray5">{data.keywordCount}</p>
+                <p className="font-bold text-gray5">{data.keywordCount}</p>
               </div>
             </div>
           </div>

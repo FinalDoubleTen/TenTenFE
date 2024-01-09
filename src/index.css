@@ -67,6 +67,16 @@ code {
   .body2 {
     @apply font-bold;
   }
+
+  [data-state='open'] .rotate-on-open {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }
+
+  [data-state='closed'] .rotate-on-open {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
 }
 
 .body1,

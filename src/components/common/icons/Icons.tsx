@@ -174,11 +174,13 @@ export const CheckIcon: React.FC<IconProps> = ({
   fill = 'none',
   onClick,
   cursor = 'pointer',
+  className,
 }) => {
   return (
     <svg
       onClick={onClick}
       cursor={cursor}
+      className={className}
       width={size}
       height={size}
       viewBox="0 0 17 17"
